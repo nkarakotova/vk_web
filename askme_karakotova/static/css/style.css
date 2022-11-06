@@ -1,0 +1,264 @@
+.navbar {
+	height: 70px;
+}
+
+.container {
+	padding:  60px 15px 0;
+	margin-top: 10px;
+}
+
+.question {
+	margin-bottom:  20px;
+	border:  2px solid gray;
+	border-radius: 6px;
+	padding: 10px;
+}
+
+.avatar {
+	width:  70px;
+	height: 70px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.avatar img {
+	width:  100%;
+	height:  100%;
+	object-fit: cover;
+}
+
+.current-question {
+	margin-bottom:  20px;
+	border: 0;
+	border-radius: 6px;
+	padding: 5px;
+}
+
+.answer {
+	margin-bottom:  20px;
+	border:  2px solid gray;
+	border-radius: 6px;
+	padding: 20px;
+}
+
+.current-avatar {
+	width:  100px;
+	height: 100px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.current-avatar img {
+	width:  100%;
+	height:  100%;
+	object-fit: cover;
+}
+
+.header-user-pict {
+	width:  37px;
+	height: 37px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin-left: 100px;
+	margin-right: 10px;
+}
+
+.header-user-pict img {
+	width:  100%;
+	height:  100%;
+	object-fit: cover;
+}
+
+.header-login {
+	margin-left: 350px;
+	margin-top: 5px;
+}
+
+.nav-search {
+	margin-left: 450px;
+}
+
+.ask-buttom {
+	height: 100%;
+	margin-left: 100px;
+	align: center;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 0px;
+    background-color: #f5f5f5;
+}
+
+.container-footer {
+	padding:  30px 15px 0;
+}
+
+.footer > .container-footer {
+    padding-right: 15px;
+    padding-left: 60px;
+}
+
+.like {
+ 	font-size:24px;
+ 	margin-left: 3px;
+ 	margin-top: 10px;
+}
+
+.current-like {
+ 	font-size:24px;
+ 	margin-left: 15px;
+ 	margin-top: 10px;
+}
+
+.plus {
+	color:green;
+	height:30px;
+    width:30px;
+    padding: 0px;
+    line-height: 0px;
+    font-size: 20px;
+}
+
+.minus{
+	color:red;
+	height:30px;
+    width:30px;
+    padding: 0px;
+    line-height: 0px;
+    font-size: 20px;
+}
+
+.sidebar {
+	margin-left: 100px;
+}
+
+.custom-tags-min-popular {
+	font-family: 'Caveat', serif;
+    font-size: 30px;
+    color: gray;
+    text-decoration: none;
+    word-spacing: 10px
+}
+
+.custom-tags-popular {
+	font-family: 'Caveat', serif;
+    font-size: 40px;
+    color: orange;
+    text-decoration: none;
+    word-spacing: 10px
+}
+
+.custom-tags-max-popular {
+	font-family: 'Caveat', serif;
+    font-size: 50px;
+    color: darkgreen;
+    text-decoration: none;
+    word-spacing: 10px
+}
+
+.login-form {
+	width: 500px;
+}
+
+.upload-avatar {
+	width: 300px;
+}
+
+.checkbox {
+	margin-top: 20px;
+}
+
+.btn-lg {
+	margin-top: 20px;
+}
+
+.create-new-account {
+	margin-top: 20px;
+}
+
+.error {
+	color: red;
+}
+
+.login-input {
+	margin-top: 20px;
+}
+
+.choose-button {
+	height: 100%;
+	width: 100%;
+	align: center;
+}
+
+.input-file {
+	position: relative;
+	display: inline-block;
+}
+.input-file-text {
+	padding: 0 10px;
+	line-height: 40px;
+	text-align: left;
+	height: 40px;
+	display: block;
+	float: left;
+	box-sizing: border-box;
+	width: 410px;
+	border-radius: 6px 0px 0 6px;
+	border: 1px solid #ddd;
+}
+.input-file-btn {
+position: relative;
+	display: inline-block;
+	cursor: pointer;
+	outline: none;
+	text-decoration: none;
+	font-size: 14px;
+	vertical-align: middle;
+	color: rgb(255 255 255);
+	text-align: center;
+	border-radius: 0 4px 4px 0;
+	background-color: #419152;
+	line-height: 22px;
+	height: 40px;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	border: none;
+	margin: 0;
+	transition: background-color 0.2s;
+}
+.input-file input[type=file] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
+}
+ 
+/* Focus */
+.input-file input[type=file]:focus + .input-file-btn {
+	box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+ 
+/* Hover/active */
+.input-file:hover .input-file-btn {
+	background-color: #59be6e;
+}
+.input-file:active .input-file-btn {
+	background-color: #2E703A;
+}
+ 
+/* Disabled */
+.input-file input[type=file]:disabled + .input-file-btn {
+	background-color: #eee;
+}
+
+
+:focus::-webkit-input-placeholder {color: transparent}
+:focus::-moz-placeholder          {color: transparent}
+:focus:-moz-placeholder           {color: transparent}
+:focus:-ms-input-placeholder      {color: transparent}

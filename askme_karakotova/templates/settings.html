@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <title>Settings</title>
+
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
+    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+   
+    <!-- Custom styles for this template -->
+    <link href="../static/css/style.css" rel="stylesheet">
+  </head>
+<body class="d-flex flex-column h-100">
+    
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="">
+        <img src="../static/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        ASKarakotova
+      </a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <form class="d-flex nav-search" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        </form>
+        <ul class="nav navbar-nav">
+          <li class="ask-buttom">
+            <form action="new-question.html">
+              <button class="btn btn-outline-success" type="submit">Ask</button>
+            </form>
+          </li>
+          <li class="nav-item header-user-pict">
+            <img src="../static/img/korgi.jpg" alt="" />
+          </li>
+        </ul>
+        <div class="row">
+          <div class="row">
+            <font color="white" size="3">Mr. Korgi</font>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <a href="settings.html"><font color="white" size="2">Settings</font></a>
+            </div>
+            <div class="col-6">
+              <a href=""><font color="white" size="2">Log out</font></a>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+
+  <div class="container">
+  	<h1>Settings: Mr. Korgi</h1>
+  	<div class="row">
+  		<div class="col-8">
+
+        <form class="login-form">
+
+          <div class="error">Sorry, this this password is not secure</div>
+          <div class="form-floating login-input">
+            <input type="text" class="form-control" id="floatingLogin" placeholder="login" value="sobaken">
+            <label for="floatingLogin">
+              <span style="color: gray; font-size: 15px">Enter new login</span>
+            </label>
+          </div>
+          <div class="form-floating">
+            <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" value="sobaken@mail.ru">
+            <label for="floatingEmail">
+              <span style="color: gray; font-size: 15px">Enter new e-mail</span>
+            </label>
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingNickname" placeholder="nickname" value="subersaba777">
+            <label for="floatingNickname">
+              <span style="color: gray; font-size: 15px">Enter new nickname</span>
+            </label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="password">
+            <label for="floatingPassword">
+              <span style="color: gray; font-size: 15px">Enter new password</span>
+            </label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="password">
+            <label for="floatingPassword">
+              <span style="color: gray; font-size: 15px">Repeat new password</span>
+            </label>
+          </div>
+          <div>
+            <label class="input-file">
+                <span class="input-file-text" type="text" style="color: gray; font-size: 15px">Upload new avatar</span>
+                <input type="file" name="file" value="../static/img/korgi.jpg">      
+                <span class="input-file-btn">Choose</span>
+                <script src="../static/js/test.js"></script>
+            </label>
+          </div>
+          <div class="current-avatar" style="margin-top: 10px; margin-left: 200px;">
+            <img src="../static/img/korgi.jpg" alt="" />
+          </div>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Save</button>
+        </form>
+
+  		</div>
+  		<div class="col-4">
+        <div class="sidebar">
+ 
+          <h2>Popular tags</h2>
+
+          <div>
+            <a href="tag.html" class=custom-tags-popular>sobachki </a>
+            <a href="" class=custom-tags-max-popular>kotiki </a>
+            <a href="" class=custom-tags-min-popular>zayki </a>
+          </div>
+
+          <h2>Best members</h2>
+
+          <p><a href="">Mr. Korgi</a></p>
+          <p><a href="">Mr. Zaits</a></p>
+          <p><a href="">Mr. Kot</a></p>
+
+        </div>
+
+      </div>
+  	</row>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="container-footer">
+    <span class="text-muted">Created by Karakotova Natalia</span>
+  </div>
+</footer>
+
+</body>
+</html>
