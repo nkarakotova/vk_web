@@ -1,174 +1,59 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width initial-scale=1">
-    <title>Question</title>
+{% extends "inc/base.html" %}
 
-    <link href="../static/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
-   
-    <!-- Custom styles for this template -->
-    <link href="../static/css/style.css" rel="stylesheet">
-  </head>
-<body class="d-flex flex-column h-100">
-    
-<header>
-  <!-- Fixed navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="">
-        <img src="../static/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        ASKarakotova
-      </a>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <form class="d-flex nav-search" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        </form>
-        <div class="row header-login">
-          <div class="col-6">
-            <a href="login.html"><font color="white" size="2">Log in</font></a>
-          </div>
-          <div class="col-6">
-            <a href="registration.html"><font color="white" size="2">Register</font></a>
-          </div>
-        </div> 
-      </div>
-    </div>
-  </nav>
+{% load static %}
 
-</header>
+{% block title %}
+<title>Question</title>
+{% endblock title %}
 
-<!-- Begin page content -->
-<main class="flex-shrink-0">
+{% block header %}
+{% include "inc/unautorisated-header.html" %}
+{% endblock header %}
 
-  <div class="container">
-  	<div class="row">
-  		<div class="col-8">
+{% block content %}
 
-  			<div class="current-question">
-  				<div class="row">
-  					<div class="col-2">
-  						<div class="current-avatar">
-  							<img src="../static/img/korgi.jpg" alt="" />
-  						</div>
+<div class="col-8">
+	<div class="current-question">
+		<div class="row">
+			<div class="col-2">
+				<div class="current-avatar">
+					<img src="{%static '../static/img/korgi.jpg' %}" alt="" />
+				</div>
 
-              <div class="current-like">
-                <button class="plus cursor">+</button> 
-                <button class="minus cursor">-</button>  
-                <span class="counter">7</span>
-              </div>
-
-  					</div>
-  					<div class="col-10">
-  						<h1 class="question-title">What can I do about myself?</h1>
-  						<div class="question-text" align="justify">
-  							What if the sobachki really want to drive the kotoki up a tree, but they are not allowed by the owners? I would like to hear an answer from an understanding kotik. I think it will help both sobachki and kotiki.
-  						</div>
-                <div style="margin-top: 10px">
-                  <span>Tags: </span>
-                  <a href="">kotiki</a>
-                  <a href="">sobachki</a>
-                </div>
-  					</div>
-  				</div>
-  			</div>
-
-        <hr>
-
-  			<div class="answer">
-  				<div class="row">
-  					<div class="col-2">
-  						<div class="avatar">
-  							<img src="../static/img/kot.jpg" alt="" />
-  						</div>
-              <div class="like">
-                <button class="plus cursor">+</button> 
-                <button class="minus cursor">-</button>  
-                <span class="counter">3</span>
-              </div>
-  					</div>
-  					<div class="col-10">
-  						<div class="question-text" align="justify" style="height: 70px;">
-                Hmm, I think you should see a psychologist. Such a desire is abnormal and as an intelligent kotik I advise you not to allow such behavior.
-  						</div>
-              <div class="row" >
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" value="correct"> Correct!
-                  </label>
-                </div>
-              </div>
-  					</div>
-  				</div>
-  			</div>
-
-  			<div class="answer">
-  				<div class="row">
-  					<div class="col-2">
-  						<div class="avatar">
-  							<img src="../static/img/zaits.jpg" alt="" />
-  						</div>
-              <div class="like">
-                <button class="plus cursor">+</button> 
-                <button class="minus cursor">-</button>  
-                <span class="counter">5</span>
-              </div>
-  					</div>
-  					<div class="col-10">
-  						<div class="question-text" align="justify" style="height: 70px;">
-  							I don't understand how you can chase kotiki, much less drive them up a tree. Be kinder, be friends with everything. Ask for forgiveness from the kotiki that you drove up a tree.
-  						</div>
-              <div class="row">
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" value="correct"> Correct!
-                  </label>
-                </div>
-              </div>
-  					</div>
-  				</div>
-  			</div>
-
-        <hr>
-
-        <div>
-          <textarea name="message" style="border-radius: 6px; border: 2px solid gray;" id="messageField" cols="85" rows="3" placeholder="Enter your answer here..."></textarea>
+        <div class="current-like">
+          <button class="plus cursor">+</button> 
+          <button class="minus cursor">-</button>  
+          <span class="counter">7</span>
         </div>
 
-        <button class="btn btn-outline-success" type="submit" style="width: 100px;">Answer</button>
-
-  		</div>
-  		<div class="col-4">
-        <div class="sidebar">
- 
-          <h2>Popular tags</h2>
-
-          <div>
-            <a href="tag.html" class=custom-tags-popular>sobachki </a>
-            <a href="" class=custom-tags-max-popular>kotiki </a>
-            <a href="" class=custom-tags-min-popular>zayki </a>
+			</div>
+			<div class="col-10">
+				<h1 class="question-title">{{question.title}}</h1>
+				<div class="question-text" align="justify">
+					{{question.text}}
+				</div>
+          <div style="margin-top: 10px">
+            <span>Tags: </span>
+            <a href="">kotiki</a>
+            <a href="">sobachki</a>
           </div>
+			</div>
+		</div>
+	</div>
 
-          <h2>Best members</h2>
+  <hr>
 
-          <p><a href="">Mr. Korgi</a></p>
-          <p><a href="">Mr. Zaits</a></p>
-          <p><a href="">Mr. Kot</a></p>
+	{% for answer in answers %}
+		{% include 'inc/answer-item.html' %}
+	{% endfor %}
 
-        </div>
+  <hr>
 
-      </div>
-  	</row>
+  <div>
+    <textarea name="message" style="border-radius: 6px; border: 2px solid gray;" id="messageField" cols="85" rows="3" placeholder="Enter your answer here..."></textarea>
   </div>
 
-</main>
+  <button class="btn btn-outline-success" type="submit" style="width: 100px;">Answer</button>
+</div>
 
-<footer class="footer">
-  <div class="container-footer">
-    <span class="text-muted">Created by Karakotova Natalia</span>
-  </div>
-</footer>
-
-</body>
-</html>
+{% endblock %}

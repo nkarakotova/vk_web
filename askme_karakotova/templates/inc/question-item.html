@@ -1,0 +1,34 @@
+{% load static %}
+
+<div class="question">
+	<div class="row">
+		<div class="col-2">
+			<div class="avatar">
+				<img src="{% static '../static/img/korgi.jpg' %}" alt="" />
+			</div>
+
+      <div class="like">
+        <button class="plus cursor">+</button> 
+        <button class="minus cursor">-</button>  
+        <span class="counter">{{question.rating}}</span>
+      </div>
+
+		</div>
+		<div class="col-10">
+			<h2 class="question-title"><a href="{% url 'question' question_id=question.id %}">{{question.title}}</a></h2>
+			<div class="question-text" align="justify">
+				{{question.text}}
+			</div>
+      <div class="row">
+        <div class="col-6">
+          <a href="">answer ({{question.answers_number}})</a>
+        </div>
+        <div class="col-6">
+          <span>Tags: </span>
+          <a href="">kotiki</a>
+          <a href="">sobachki</a>
+        </div>
+      </div>  
+		</div>
+	</div>
+</div>

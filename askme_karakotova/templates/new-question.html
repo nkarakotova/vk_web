@@ -1,117 +1,53 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width initial-scale=1">
-    <title>New question</title>
+{% extends "inc/base.html" %}
 
-    <link href="../static/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
-   
-    <!-- Custom styles for this template -->
-    <link href="../static/css/style.css" rel="stylesheet">
-  </head>
-<body class="d-flex flex-column h-100">
-    
-<header>
-  <!-- Fixed navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="">
-        <img src="../static/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        ASKarakotova
-      </a>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <form class="d-flex nav-search" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        </form>
-        <div class="row header-login">
-          <div class="col-6">
-            <a href="login.html"><font color="white" size="2">Log in</font></a>
-          </div>
-          <div class="col-6">
-            <a href="registration.html"><font color="white" size="2">Register</font></a>
-          </div>
-        </div> 
+{% load static %}
+
+{% block title %}
+<title>New question</title>
+{% endblock title %}
+
+{% block header %}
+{% include "inc/unautorisated-header.html" %}
+{% endblock header %}
+
+{% block content %}
+
+<h1>New question</h1>
+<div class="col-8">
+  <form method="post" action="/im/">
+    <div class="error" style="margin-bottom: 20px;">Sorry, the title was not entered</div>
+    <div class="row">
+      <div class="col-1">
+        <span>Title</span>
+      </div>
+      <div class="col-11">
+        <textarea name="message" id="messageField" cols="45" rows="1" placeholder="Input question title"></textarea>
       </div>
     </div>
-  </nav>
-
-</header>
-
-<!-- Begin page content -->
-<main class="flex-shrink-0">
-
-  <div class="container">
-  	<h1>New question</h1>
-  	<div class="row">
-  		<div class="col-8">
-
-        <form method="post" action="/im/">
-          <div class="error" style="margin-bottom: 20px;">Sorry, the title was not entered</div>
-          <div class="row">
-            <div class="col-1">
-              <span>Title</span>
-            </div>
-            <div class="col-11">
-              <textarea name="message" id="messageField" cols="45" rows="1" placeholder="Input question title"></textarea>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-1">
-              <span>Text</span>
-            </div>
-            <div class="col-11">
-              <textarea name="message" id="messageField" cols="45" rows="10" placeholder="Input question text"></textarea>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-1">
-              <span>Tags</span>
-            </div>
-            <div class="col-11">
-              <textarea name="message" id="messageField" cols="45" rows="1" placeholder="Input tags"></textarea>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-1"></div>
-            <div class="col-11">
-              <button class="btn btn-outline-success" type="submit" style="width: 460px;">ASK</button>
-            </div>
-          </div>
-        </form>
-
-  		</div>
-  		<div class="col-4">
-        <div class="sidebar">
- 
-          <h2>Popular tags</h2>
-
-          <div>
-            <a href="tag.html" class=custom-tags-popular>sobachki </a>
-            <a href="" class=custom-tags-max-popular>kotiki </a>
-            <a href="" class=custom-tags-min-popular>zayki </a>
-          </div>
-
-          <h2>Best members</h2>
-
-          <p><a href="">Mr. Korgi</a></p>
-          <p><a href="">Mr. Zaits</a></p>
-          <p><a href="">Mr. Kot</a></p>
-
-        </div>
-
+    <div class="row">
+      <div class="col-1">
+        <span>Text</span>
       </div>
-  	</row>
-  </div>
+      <div class="col-11">
+        <textarea name="message" id="messageField" cols="45" rows="10" placeholder="Input question text"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1">
+        <span>Tags</span>
+      </div>
+      <div class="col-11">
+        <textarea name="message" id="messageField" cols="45" rows="1" placeholder="Input tags"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-11">
+        <button class="btn btn-outline-success" type="submit" style="width: 460px;">ASK</button>
+      </div>
+    </div>
+  </form>
+</div>
 
-</main>
-
-<footer class="footer">
-  <div class="container-footer">
-    <span class="text-muted">Created by Karakotova Natalia</span>
-  </div>
-</footer>
-
-</body>
-</html>
+{% endblock %}
+  		

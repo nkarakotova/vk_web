@@ -1,175 +1,26 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width initial-scale=1">
-    <title>Tag</title>
+{% extends "inc/base.html" %}
 
-    <link href="../static/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
-   
-    <!-- Custom styles for this template -->
-    <link href="../static/css/style.css" rel="stylesheet">
-  </head>
-<body class="d-flex flex-column h-100">
-    
-<header>
-  <!-- Fixed navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="">
-        <img src="../static/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        ASKarakotova
-      </a>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <form class="d-flex nav-search" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        </form>
-        <ul class="nav navbar-nav">
-          <li class="ask-buttom">
-            <form action="new-question.html">
-              <button class="btn btn-outline-success" type="submit">Ask</button>
-            </form>
-          </li>
-          <li class="nav-item header-user-pict">
-            <img src="../static/img/korgi.jpg" alt="" />
-          </li>
-        </ul>
-        <div class="row">
-          <div class="row">
-            <font color="white" size="3">Mr. Korgi</font>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <a href="settings.html"><font color="white" size="2">Settings</font></a>
-            </div>
-            <div class="col-6">
-              <a href=""><font color="white" size="2">Log out</font></a>
-            </div>
-          </div>
-        </div> 
-      </div>
-    </div>
-  </nav>
+{% load static %}
 
-</header>
+{% block title %}
+<title>Question</title>
+{% endblock title %}
 
-<!-- Begin page content -->
-<main class="flex-shrink-0">
+{% block header %}
+{% include 'inc/autorisated-header.html' %}
+{% endblock header %}
 
-  <div class="container">
-    <div class="row">
-      <div class="col-3">
-    	 <h1>Tag: sobachki</h1>
-      </div>
-    </div>
-  	<div class="row">
-  		<div class="col-8">
+{% block content %}
 
-  			<div class="question">
-  				<div class="row">
-  					<div class="col-2">
-  						<div class="avatar">
-  							<img src="../static/img/korgi.jpg" alt="" />
-  						</div>
+<h1>Tag: sobachki</h1>
+<div class="col-8">
 
-              <div class="like">
-                <button class="plus cursor">+</button> 
-                <button class="minus cursor">-</button>  
-                <span class="counter">7</span>
-              </div>
+	{% for question in questions %}
+		{% include 'inc/question-item.html' %}
+	{% endfor %}
 
-  					</div>
-  					<div class="col-10">
-  						<h2 class="question-title">What can I do about myself?</h2>
-  						<div class="question-text" align="justify">
-  							What if the sobachki really want to drive the kotoki up a tree, but they are not allowed by the owners? I would like to hear an answer from an understanding kotik. I think it will help both sobachki and kotiki.
-  						</div>
-              <div class="row">
-                <div class="col-6">
-                  <a href="">answer (3)</a>
-                </div>
-                <div class="col-6">
-                  <span>Tags: </span>
-                  <a href="">kotiki</a>
-                  <a href="">sobachki</a>
-                </div>
-              </div>  
-  					</div>
-  				</div>
-  			</div>
+  {% include 'inc/paginator.html' %}  	
 
-  			<div class="question">
-  				<div class="row">
-  					<div class="col-2">
-  						<div class="avatar">
-  							<img src="../static/img/zaits.jpg" alt="" />
-  						</div>
-              <div class="like">
-                <button class="plus cursor">+</button> 
-                <button class="minus cursor">-</button>  
-                <span class="counter">5</span>
-              </div>
-  					</div>
-  					<div class="col-10">
-  						<h2 class="question-title">Can everyone live together?</h2>
-  						<div class="question-text" align="justify">
-  							Сan someone explain to me why kotiki and sobachki have a lot of complaints about everything? I'm a cute zayka who is kind to his friends Bobik and Barsik. Can everyone live together?
-  						</div>
-              <div class="row">
-                <div class="col-6">
-                  <a href="">answer (3)</a>
-                </div>
-                <div class="col-6">
-                  <span>Tags: </span>
-                  <a href="">kotiki</a>
-                  <a href="">zayki</a>
-                  <a href="">sobachki</a>
-                </div>
-              </div>
-  					</div>
-  				</div>
-  			</div>
+</div>
 
-			<ul class="pagination">
-			    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-			    <li class="page-item"><a class="page-link" href="#">1</a></li>
-			    <li class="page-item"><a class="page-link" href="#">2</a></li>
-			    <li class="page-item"><a class="page-link" href="#">3</a></li>
-			    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-			 </ul>  			
-
-  		</div>
-  		<div class="col-4">
-        <div class="sidebar">
- 
-          <h2>Popular tags</h2>
-
-          <div>
-            <a href="tag.html" class=custom-tags-popular>sobachki </a>
-            <a href="" class=custom-tags-max-popular>kotiki </a>
-            <a href="" class=custom-tags-min-popular>zayki </a>
-          </div>
-
-          <h2>Best members</h2>
-
-          <p><a href="">Mr. Korgi</a></p>
-          <p><a href="">Mr. Zaits</a></p>
-          <p><a href="">Mr. Kot</a></p>
-
-        </div>
-
-      </div>
-  	</row>
-  </div>
-
-</main>
-
-<footer class="footer">
-  <div class="container-footer">
-    <span class="text-muted">Created by Karakotova Natalia</span>
-  </div>
-</footer>
-
-</body>
-</html>
+{% endblock %}

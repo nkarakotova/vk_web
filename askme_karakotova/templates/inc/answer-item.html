@@ -1,0 +1,28 @@
+{% load static %}
+
+<div class="answer">
+	<div class="row">
+		<div class="col-2">
+			<div class="avatar">
+				<img src="{% static '../static/img/kot.jpg' %}" alt="" />
+			</div>
+      <div class="like">
+        <button class="plus cursor">+</button> 
+        <button class="minus cursor">-</button>  
+        <span class="counter">{{answer.rating}}</span>
+      </div>
+		</div>
+		<div class="col-10">
+			<div class="question-text" align="justify" style="height: 70px;">
+        {{answer.text}}
+			</div>
+      <div class="row" >
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="correct"> Correct!
+          </label>
+        </div>
+      </div>
+		</div>
+	</div>
+</div>
