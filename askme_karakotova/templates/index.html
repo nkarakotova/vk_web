@@ -6,108 +6,14 @@
 <title>Questions</title>
 {% endblock title %}
 
-{% block header %}
-{% include "inc/autorisated-header.html" %}
-{% endblock header %}
-
 {% block content %}
 
 <h1>New questions</h1>
 <div class="col-8">
-  <div class="question">
-    <div class="row">
-      <div class="col-2">
-        <div class="avatar">
-          <img src="{% static '../static/img/korgi.jpg' %}" alt="" />
-        </div>
 
-        <div class="like">
-          <button class="plus cursor">+</button> 
-          <button class="minus cursor">-</button>  
-          <span class="counter">7</span>
-        </div>
-
-      </div>
-      <div class="col-10">
-        <h2 class="question-title">Question 1</h2>
-        <div class="question-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum neque, voluptate facilis natus optio labore autem perspiciatis culpa, et repudiandae odio, cum libero animi molestias. In eum, accusamus dolor ut.
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <a href="">answer (3)</a>
-          </div>
-          <div class="col-6">
-            <span>Tags: </span>
-            <a href="">kotiki</a>
-            <a href="">sobachki</a>
-          </div>
-        </div>  
-      </div>
-    </div>
-  </div>
-
-  <div class="question">
-    <div class="row">
-      <div class="col-2">
-        <div class="avatar">
-          <img src="{% static "../static/img/kot.jpg" %}" alt="" />
-        </div>
-        <div class="like">
-          <button class="plus cursor">+</button> 
-          <button class="minus cursor">-</button>  
-          <span class="counter">3</span>
-        </div>
-      </div>
-      <div class="col-10">
-        <h2 class="question-title">Question 2</h2>
-        <div class="question-text">
-          Lorem, ipsum dolor sit, amet consectetur adipisicing elit. Similique, ad illo voluptate est sequi nam vitae inventore reiciendis blanditiis, consequuntur exercitationem, incidunt amet ea vel veritatis dolor ipsam quibusdam assumenda!
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <a href="">answer (3)</a>
-          </div>
-          <div class="col-6">
-            <span>Tags: </span>
-            <a href="">kotiki</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="question">
-    <div class="row">
-      <div class="col-2">
-        <div class="avatar">
-          <img src="{% static '../static/img/zaits.jpg' %}" alt="" />
-        </div>
-        <div class="like">
-          <button class="plus cursor">+</button> 
-          <button class="minus cursor">-</button>  
-          <span class="counter">5</span>
-        </div>
-      </div>
-      <div class="col-10">
-        <h2 class="question-title">Question 3</h2>
-        <div class="question-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis voluptas eligendi nesciunt, beatae cum ea modi, maxime nisi quam consequuntur quia. Vitae provident excepturi distinctio laboriosam, tempore architecto cum illo?
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <a href="">answer (3)</a>
-          </div>
-          <div class="col-6">
-            <span>Tags: </span>
-            <a href="">kotiki</a>
-            <a href="">zayki</a>
-            <a href="">sobachki</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% for question in page %}
+    {% include 'inc/question-item.html' %}
+  {% endfor %}
 
   {% include "inc/paginator.html" %}
        

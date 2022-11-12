@@ -6,10 +6,6 @@
 <title>Registration</title>
 {% endblock title %}
 
-{% block header %}
-{% include "inc/unautorisated-header.html" %}
-{% endblock header %}
-
 {% block content %}
 
 <h1>Registration</h1>
@@ -51,7 +47,7 @@
           <span class="input-file-text" type="text" style="color: gray; font-size: 15px">Upload avatar</span>
           <input type="file" name="file">        
           <span class="input-file-btn">Choose</span>
-          <script src="{% static "../static/js/test.js" %}"></script>
+          <script src="{% static '../static/js/test.js' %}"></script>
       </label>
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>

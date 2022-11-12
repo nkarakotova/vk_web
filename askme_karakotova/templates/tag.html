@@ -6,20 +6,16 @@
 <title>Question</title>
 {% endblock title %}
 
-{% block header %}
-{% include 'inc/autorisated-header.html' %}
-{% endblock header %}
-
 {% block content %}
 
-<h1>Tag: sobachki</h1>
+<h1>Tag: {{tag}}</h1>
 <div class="col-8">
 
-	{% for question in questions %}
-		{% include 'inc/question-item.html' %}
-	{% endfor %}
+  {% for question in page %}
+    {% include 'inc/question-item.html' %}
+  {% endfor %}
 
-  {% include 'inc/paginator.html' %}  	
+  {% include "inc/paginator.html" %}	
 
 </div>
 

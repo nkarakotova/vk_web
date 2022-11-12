@@ -6,10 +6,6 @@
 <title>Question</title>
 {% endblock title %}
 
-{% block header %}
-{% include "inc/unautorisated-header.html" %}
-{% endblock header %}
-
 {% block content %}
 
 <div class="col-8">
@@ -23,14 +19,14 @@
         <div class="current-like">
           <button class="plus cursor">+</button> 
           <button class="minus cursor">-</button>  
-          <span class="counter">7</span>
+          <span class="counter">{{question_item.rating}}</span>
         </div>
 
 			</div>
 			<div class="col-10">
-				<h1 class="question-title">{{question.title}}</h1>
+				<h1 class="question-title">{{question_item.title}}</h1>
 				<div class="question-text" align="justify">
-					{{question.text}}
+					{{question_item.text}}
 				</div>
           <div style="margin-top: 10px">
             <span>Tags: </span>
@@ -43,7 +39,7 @@
 
   <hr>
 
-	{% for answer in answers %}
+	{% for answer in page %}
 		{% include 'inc/answer-item.html' %}
 	{% endfor %}
 
@@ -53,7 +49,9 @@
     <textarea name="message" style="border-radius: 6px; border: 2px solid gray;" id="messageField" cols="85" rows="3" placeholder="Enter your answer here..."></textarea>
   </div>
 
-  <button class="btn btn-outline-success" type="submit" style="width: 100px;">Answer</button>
+  <button class="btn btn-outline-success" type="submit" style="width: 100px; border: 2px solid green; margin: 10px 0px">Answer</button>
+
+  {% include "inc/paginator.html" %}
 </div>
 
 {% endblock %}
