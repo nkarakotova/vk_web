@@ -12,7 +12,7 @@ def paginate(request, objects_list, per_page=7):
 
 
 def index(request):
-    QUESTIONS = models.Question.objects.all()
+    QUESTIONS = models.Question.objects.order_by('-add_time')
     paginator, page_obj = paginate(request, QUESTIONS, 3)
     context = {'paginator': paginator,
                'page': page_obj, 
@@ -53,7 +53,7 @@ def settings(request):
 def question(request, id: int):
     if id <= models.Question.objects.last().id:
         question_item = models.Question.objects.get(id=id)
-        paginator, page_obj = paginate(request, question_item.get_answers(), 5)
+        paginator, page_obj = paginate(request, question_item.get_answers().order_by('-add_time'), 5)
         context = {'paginator': paginator, 
                    'page': page_obj, 
                    'question': question_item,
@@ -68,7 +68,7 @@ def question(request, id: int):
 def tag(request, tag_name: str):
     if models.Tag.objects.filter(name=tag_name).count() > 0:
         tag = models.Tag.objects.get(name=tag_name)
-        tag_questions = tag.questions_by_tag()
+        tag_questions = tag.questions_by_tag().order_by('-add_time')
         paginator, page_obj = paginate(request, tag_questions, 3)
         context = {'paginator': paginator, 
                    'page': page_obj, 
