@@ -3,18 +3,27 @@ from django.contrib.auth.models import User
 import django.contrib.auth.backends
 import os.path
 from django.db.models import Count
+from django.db.models import Sum
+
+class MemberManager(models.Manager):
+    def best_members(self):
+        return self.all().annotate(rating=Count('questions')).order_by('rating').reverse()[:5]
 
 
 class Member(models.Model):
     info = models.OneToOneField(django.contrib.auth.backends.UserModel, on_delete=models.CASCADE)
     avatar = models.ImageField(default="static/img/korgi.jpg", upload_to="app/static/img", blank=True)
-    rating = models.IntegerField(blank=True, null=True)
 
-    def __str__(self):
-        return self.info.__str__()
+    objects = MemberManager()
 
     def get_avatar(self):
         return "img/" + os.path.basename(self.avatar.name)
+
+    def rating(self) -> int:
+        return self.questions.agregate(Sum('rating')) + self.answers.agregate(Sum('rating'))
+
+    def __str__(self):
+        return self.info.__str__()
 
 #–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-------------------
 
@@ -72,7 +81,7 @@ class Answer(models.Model):
     like_users = models.ManyToManyField(Member, related_name="answer_likes", blank=True)
     dislike_users = models.ManyToManyField(Member, related_name="answer_dislikes", blank=True)
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="answers", related_query_name="answer")
-    
+
     def get_add_time(self):
         return f'{self.add_time}'
 

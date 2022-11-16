@@ -17,7 +17,7 @@ def index(request):
     context = {'paginator': paginator,
                'page': page_obj, 
                'popular_tags': models.Tag.objects.popular_tags,
-               'best_members': models.BEST_MEMBERS,
+               'best_members': models.Member.objects.best_members,
                'is_authorisated': request.user.is_authenticated}
     return render(request, 'index.html', context=context)
 
@@ -25,28 +25,28 @@ def index(request):
 def login(request):
     context = {'popular_tags': models.Tag.objects.popular_tags, 
                'is_authorisated': request.user.is_authenticated,
-               'best_members': models.BEST_MEMBERS}
+               'best_members': models.Member.objects.best_members}
     return render(request, 'login.html', context=context)
 
 
 def new_question(request):
     context = {'popular_tags': models.Tag.objects.popular_tags, 
                'is_authorisated': request.user.is_authenticated,
-               'best_members': models.BEST_MEMBERS}
+               'best_members': models.Member.objects.best_members}
     return render(request, 'new-question.html', context=context)
 
 
 def registration(request):
     context = {'popular_tags': models.Tag.objects.popular_tags, 
                'is_authorisated': request.user.is_authenticated,
-               'best_members': models.BEST_MEMBERS}
+               'best_members': models.Member.objects.best_members}
     return render(request, 'registration.html', context=context)
 
 
 def settings(request):
     context = {'popular_tags': models.Tag.objects.popular_tags, 
                'is_authorisated': request.user.is_authenticated,
-               'best_members': models.BEST_MEMBERS}
+               'best_members': models.Member.objects.best_members}
     return render(request, 'settings.html', context=context)
 
 
@@ -57,7 +57,7 @@ def question(request, id: int):
         context = {'paginator': paginator, 
                    'page': page_obj, 
                    'question': question_item,
-                   'best_members': models.BEST_MEMBERS, 
+                   'best_members': models.Member.objects.best_members, 
                    'popular_tags': models.Tag.objects.popular_tags, 
                    'is_authorisated': request.user.is_authenticated}
         return render(request, 'question.html', context=context)
@@ -73,7 +73,7 @@ def tag(request, tag_name: str):
         context = {'paginator': paginator, 
                    'page': page_obj, 
                    'tag': tag_name,
-                   'best_members': models.BEST_MEMBERS, 
+                   'best_members': models.Member.objects.best_members, 
                    'popular_tags': models.Tag.objects.popular_tags, 
                    'is_authorisated': request.user.is_authenticated}
         return render(request, 'tag.html', context=context)
@@ -89,7 +89,7 @@ def hot_questions(request):
     context = {'paginator': paginator, 
                'page': page_obj, 
                'popular_tags': models.Tag.objects.popular_tags,
-               'best_members': models.BEST_MEMBERS, 
+               'best_members': models.Member.objects.best_members, 
                'is_authorisated': request.user.is_authenticated}
     return render(request, 'hot-questions.html', context=context)
         
