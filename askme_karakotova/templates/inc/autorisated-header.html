@@ -19,14 +19,14 @@
             </form>
           </li>
           <li class="nav-item header-user-pict">
-            {% with question.get_author.get_avatar as image_static %}
+            {% with request.user.member.get_avatar as image_static %}
             <img src="{% static image_static %}" alt="" />
             {% endwith %}
           </li>
         </ul>
         <div class="row">
           <div class="row">
-            <font color="white" size="3">{{question.get_author.info.username}}</font>
+            <font color="white" size="3">{{request.user.username}}</font>
           </div>
           <div class="row">
             <div class="col-6">
