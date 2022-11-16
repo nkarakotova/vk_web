@@ -14,7 +14,9 @@
         </form>
         <ul class="nav navbar-nav">
           <li class="ask-buttom">
-            <button class="btn btn-outline-success" type="submit">Ask</button>
+            <form action="{% url 'new_question' %}" target="_blank" style="margin-top: 40px">
+              <button class="btn btn-outline-success" type="submit">Ask</button>
+            </form>
           </li>
           <li class="nav-item header-user-pict">
             {% with question.get_author.get_avatar as image_static %}
