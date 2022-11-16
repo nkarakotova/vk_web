@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-2">
 			<div class="avatar">
-				<img src="{% static '../static/img/kot.jpg' %}" alt="" />
+				<img src={{question.get_author.get_avatar}} alt="" />
 			</div>
       <div class="like">
         <button class="plus cursor">+</button> 
@@ -16,7 +16,7 @@
 			<div class="question-text" align="justify" style="height: 70px;">
         {{answer.text}}
 			</div>
-      <div class="row" >
+      <div class="row">
         <div class="checkbox">
           <label>
             <input type="checkbox" value="correct"> Correct!

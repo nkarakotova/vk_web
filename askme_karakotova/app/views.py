@@ -4,16 +4,21 @@ from . import models
 from django.core.paginator import Paginator
 
 
-def index(request):
-    paginator = Paginator(models.QUESTIONS, 3)
+def paginate(request, objects_list, per_page=7):
+    paginator = Paginator(objects_list, per_page)
     page_num = request.GET.get('page')
     page_obj = paginator.get_page(page_num)
-    context = {'paginator': paginator, 
-               'page': page_obj, 
-               'popular_tags': models.POPULAR_TAGS, 
-               'is_authorisated': models.IS_AUTHORISATED,
-               'best_members': models.BEST_MEMBERS}
+    return paginator, page_obj
 
+
+def index(request):
+    QUESTIONS = models.Question.objects.all()
+    paginator, page_obj = paginate(request, QUESTIONS, 3)
+    context = {'paginator': paginator,
+               'page': page_obj, 
+               'popular_tags': models.POPULAR_TAGS,
+               'best_members': models.BEST_MEMBERS,
+               'is_authorisated': models.IS_AUTHORISATED}
     return render(request, 'index.html', context=context)
 
 
@@ -31,23 +36,6 @@ def new_question(request):
     return render(request, 'new-question.html', context=context)
 
 
-def question(request, question_id: int):
-    if question_id < len(models.QUESTIONS):
-        question_item = models.QUESTIONS[question_id]
-        paginator = Paginator(question_item['answers'], 3)
-        page_num = request.GET.get('page')
-        page_obj = paginator.get_page(page_num)
-        context = {'paginator': paginator, 
-                   'page': page_obj, 
-                   'popular_tags': models.POPULAR_TAGS, 
-                   'is_authorisated': models.IS_AUTHORISATED,
-                   'best_members': models.BEST_MEMBERS,
-                   'question_item': question_item}
-        return render(request, 'question.html', context=context)
-    else:
-        return HttpResponse(status=404, content="Not found")
-
-
 def registration(request):
     context = {'popular_tags': models.POPULAR_TAGS, 
                'is_authorisated': models.IS_AUTHORISATED,
@@ -62,22 +50,49 @@ def settings(request):
     return render(request, 'settings.html', context=context)
 
 
-def tag(request, question_tag: str):
-    tag_questions = []
-    for question_item in models.QUESTIONS:
-        if question_tag in question_item['tags']:
-            tag_questions.append(question_item)
-
-    if len(tag_questions) > 0:
-        paginator = Paginator(tag_questions, 3)
-        page_num = request.GET.get('page')
-        page_obj = paginator.get_page(page_num)
+def question(request, id: int):
+    if id <= models.Question.objects.last().id:
+        question_item = models.Question.objects.get(id=id)
+        paginator, page_obj = paginate(request, question_item.get_answers(), 5)
         context = {'paginator': paginator, 
                    'page': page_obj, 
-                   'tag': question_tag,
+                   'question': question_item,
+                   'best_members': models.BEST_MEMBERS, 
+                   'popular_tags': models.POPULAR_TAGS, 
+                   'is_authorisated': models.IS_AUTHORISATED}
+        return render(request, 'question.html', context=context)
+    else:
+        return HttpResponse(status=404, content="Not found")
+
+
+def tag(request, tag_name: str):
+    if models.Tag.objects.filter(name=tag_name).count() > 0:
+        tag = models.Tag.objects.get(name=tag_name)
+        tag_questions = tag.questions_by_tag()
+        paginator, page_obj = paginate(request, tag_questions, 3)
+        context = {'paginator': paginator, 
+                   'page': page_obj, 
+                   'tag': tag_name,
                    'best_members': models.BEST_MEMBERS, 
                    'popular_tags': models.POPULAR_TAGS, 
                    'is_authorisated': models.IS_AUTHORISATED}
         return render(request, 'tag.html', context=context)
     else:
         return HttpResponse(status=404, content="Not found")
+
+
+def hot_questions(request):
+    hot_questions = []
+
+    for question_id in sorted(models.HOT_QUESTIONS):
+        hot_questions.append(models.QUESTIONS[question_id])
+
+    paginator, page_obj = paginate(request, hot_questions, 3)
+
+    context = {'paginator': paginator, 
+               'page': page_obj, 
+               'popular_tags': models.POPULAR_TAGS,
+               'best_members': models.BEST_MEMBERS, 
+               'is_authorisated': models.IS_AUTHORISATED}
+    return render(request, 'hot-questions.html', context=context)
+        

@@ -13,25 +13,28 @@
 		<div class="row">
 			<div class="col-2">
 				<div class="current-avatar">
-					<img src="{%static '../static/img/korgi.jpg' %}" alt="" />
+					<img src={{question.get_author.get_avatar}} alt="" />
 				</div>
 
         <div class="current-like">
           <button class="plus cursor">+</button> 
           <button class="minus cursor">-</button>  
-          <span class="counter">{{question_item.rating}}</span>
+          <span class="counter">{{question.rating}}</span>
         </div>
 
 			</div>
 			<div class="col-10">
-				<h1 class="question-title">{{question_item.title}}</h1>
+				<h1 class="question-title">{{question.title}}</h1>
 				<div class="question-text" align="justify">
-					{{question_item.text}}
+					{{question.text}}
 				</div>
           <div style="margin-top: 10px">
             <span>Tags: </span>
-            <a href="">kotiki</a>
-            <a href="">sobachki</a>
+            {% for tag in question.get_tags %}
+	              <a href="{% url 'tag' tag %}" style="text-decoration: none;">
+	                  {{ tag }}
+	              </a>
+	          {% endfor %}
           </div>
 			</div>
 		</div>

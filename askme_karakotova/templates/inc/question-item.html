@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-2">
 			<div class="avatar">
-				<img src="{% static '../static/img/korgi.jpg' %}" alt="" />
+				<img src="{{question.get_author.get_avatar}}" alt="" />
 			</div>
 
       <div class="like">
@@ -17,15 +17,15 @@
 		<div class="col-10">
 			<h2 class="question-title">{{question.title}}</h2>
 			<div class="question-text" align="justify">
-				{{question.text}}
+				{{question.text}} 
 			</div>
       <div class="row">
         <div class="col-6">
-          <a href="{% url 'question' question_id=question.id %}" style="text-decoration: none;">answer ({{question.answers_number}})</a>
+          <a href="{% url 'question' id=question.id %}" style="text-decoration: none;">answer ({{question.get_num_answers}})</a>
         </div>
         <div class="col-6">
           <span>Tags: </span>
-          {% for tag in question.tags %}
+          {% for tag in question.get_tags %}
               <a href="{% url 'tag' tag %}" style="text-decoration: none;">
                   {{ tag }}
               </a>
