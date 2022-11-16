@@ -51,7 +51,7 @@
       </label>
     </div>
     <div class="current-avatar" style="margin-top: 10px; margin-left: 200px;">
-      {% with question.get_author.get_avatar as image_static %}
+      {% with request.user.member.get_avatar as image_static %}
       <img src="{% static image_static %}" alt="" />
       {% endwith %}
     </div>
