@@ -124,9 +124,3 @@ class Tag(models.Model):
         return self.name
 
 #–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-------------------
-
-BEST_MEMBERS = [
-    {'name': 'Mr. Korgi'},
-    {'name': 'Mr. Zaits'},
-    {'name': 'Mr. Kot'},
-]
