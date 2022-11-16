@@ -82,10 +82,7 @@ def tag(request, tag_name: str):
 
 
 def hot_questions(request):
-    hot_questions = []
-
-    for question_id in sorted(models.HOT_QUESTIONS):
-        hot_questions.append(models.QUESTIONS[question_id])
+    hot_questions = models.Question.objects.hot_questions()
 
     paginator, page_obj = paginate(request, hot_questions, 3)
 
