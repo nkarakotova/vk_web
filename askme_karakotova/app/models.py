@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 import django.contrib.auth.backends
 import os.path
+from django.db.models import Count
 
 
 class Member(models.Model):
@@ -80,14 +81,23 @@ class Answer(models.Model):
 
 #–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-------------------
 
+class TagManager(models.Manager):
+    def popular_tags(self):
+        return self.all().annotate(rating=Count('questions')).order_by('rating').reverse()[:5]
+
+
 class Tag(models.Model):
     name = models.CharField(max_length=10)
     questions = models.ManyToManyField(Question, related_name="tags")
     rating = models.IntegerField(blank=True, null=True)
+
+    objects = TagManager()
+
+    def rating(self) -> int:
+        return self.questions.all().count()
     
     def questions_by_tag(self):
         return self.questions.all()
-
 
     def __str__(self):
         return self.name
