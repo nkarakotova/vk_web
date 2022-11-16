@@ -1,20 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
 import django.contrib.auth.backends
+import os.path
 
 
 class Member(models.Model):
     info = models.OneToOneField(django.contrib.auth.backends.UserModel, on_delete=models.CASCADE)
-    avatar = models.ImageField(default="static/img/korgi.jpg", upload_to="static/img/avatars", blank=True)
+    avatar = models.ImageField(default="static/img/korgi.jpg", upload_to="app/static/img", blank=True)
     rating = models.IntegerField(blank=True, null=True)
-
-    #objects = MemberManager()
 
     def __str__(self):
         return self.info.__str__()
 
     def get_avatar(self):
-        return self.avatar.name
+        return "img/" + os.path.basename(self.avatar.name)
 
 #–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-------------------
 
